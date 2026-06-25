@@ -1,0 +1,956 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Metas Directora – Maya | Histórico</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<style>
+:root{
+  --or:#D85A1A;--or-d:#B84A10;--or-l:#F06030;--or-bg:#FEF2EC;
+  --gr:#27AE60;--gr-bg:#EAF7EF;
+  --re:#C0392B;--re-bg:#FDEDEC;
+  --bl:#2980B9;--bl-bg:#EBF5FB;
+  --ye:#F39C12;--ye-bg:#FEF9E7;
+  --gy1:#F8F9FA;--gy2:#E9ECEF;--gy3:#DEE2E6;--gy4:#ADB5BD;--gy5:#6C757D;--gy6:#495057;--gy7:#343A40;
+  --wh:#fff;
+  --sh:0 2px 12px rgba(0,0,0,.08);--sh2:0 6px 24px rgba(0,0,0,.12);
+  --r:12px;--r-sm:8px;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--gy1);color:var(--gy7);min-height:100vh;}
+
+/* ── HEADER ── */
+.hdr{background:linear-gradient(135deg,var(--or) 0%,var(--or-d) 100%);color:#fff;
+  padding:0 28px;display:flex;align-items:center;justify-content:space-between;
+  min-height:66px;box-shadow:0 2px 16px rgba(216,90,26,.4);position:sticky;top:0;z-index:100;}
+.hdr-l{display:flex;align-items:center;gap:14px;}
+.logo{width:40px;height:40px;background:#fff;border-radius:8px;display:flex;
+  align-items:center;justify-content:center;font-weight:900;font-size:20px;color:var(--or);flex-shrink:0;}
+.hdr-title{font-size:18px;font-weight:700;}
+.hdr-sub{font-size:11px;opacity:.8;margin-top:1px;}
+.hdr-badge{background:rgba(255,255,255,.2);border-radius:6px;padding:3px 10px;
+  font-size:12px;font-weight:600;margin-left:8px;}
+.hdr-r{font-size:11px;opacity:.75;text-align:right;line-height:1.5;}
+
+/* ── TABS ── */
+.tabs{background:#fff;border-bottom:2px solid var(--gy2);display:flex;gap:0;padding:0 28px;}
+.tab{padding:14px 22px;font-size:13px;font-weight:600;color:var(--gy5);cursor:pointer;
+  border-bottom:3px solid transparent;margin-bottom:-2px;transition:all .15s;
+  display:flex;align-items:center;gap:7px;white-space:nowrap;}
+.tab:hover{color:var(--or);}
+.tab.active{color:var(--or);border-bottom-color:var(--or);}
+.tab-icon{font-size:15px;}
+
+/* ── FILTER BAR ── */
+.fbar{background:#fff;border-bottom:1px solid var(--gy2);
+  padding:12px 28px;display:flex;align-items:center;gap:24px;flex-wrap:wrap;}
+.flabel{font-size:11px;font-weight:700;color:var(--gy5);text-transform:uppercase;
+  letter-spacing:.5px;white-space:nowrap;}
+.pills{display:flex;gap:6px;flex-wrap:wrap;}
+.pill{padding:5px 14px;border-radius:20px;font-size:12px;font-weight:600;
+  border:1.5px solid var(--gy3);background:#fff;color:var(--gy5);
+  cursor:pointer;transition:all .15s;user-select:none;}
+.pill:hover{border-color:var(--or);color:var(--or);}
+.pill.on{background:var(--or);border-color:var(--or);color:#fff;
+  box-shadow:0 2px 8px rgba(216,90,26,.3);}
+.fdiv{width:1px;height:28px;background:var(--gy2);}
+
+/* ── VIEWS ── */
+.view{display:none;padding:24px 28px;max-width:1440px;margin:0 auto;}
+.view.active{display:block;}
+
+/* ── SECTION LABELS ── */
+.slabel{font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:1px;
+  color:var(--gy5);margin:24px 0 12px;display:flex;align-items:center;gap:10px;}
+.slabel:first-child{margin-top:0;}
+.slabel::after{content:'';flex:1;height:1px;background:var(--gy2);}
+
+/* ── ALERT BAR ── */
+.alert-bar{border-radius:var(--r-sm);padding:10px 16px;font-size:13px;font-weight:500;
+  display:flex;align-items:center;gap:10px;margin-bottom:16px;}
+.alert-bar.warn{background:var(--ye-bg);border-left:4px solid var(--ye);color:#7D6608;}
+.alert-bar.good{background:var(--gr-bg);border-left:4px solid var(--gr);color:#1D6A3D;}
+.alert-bar.bad{background:var(--re-bg);border-left:4px solid var(--re);color:#922B21;}
+
+/* ── KPI CARDS ── */
+.cg{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:14px;}
+.card{background:#fff;border-radius:var(--r);padding:18px 20px;box-shadow:var(--sh);
+  border-top:3px solid var(--or);position:relative;overflow:hidden;
+  transition:transform .15s,box-shadow .15s;}
+.card:hover{transform:translateY(-2px);box-shadow:var(--sh2);}
+.card.c-gr{border-top-color:var(--gr);}
+.card.c-re{border-top-color:var(--re);}
+.card.c-bl{border-top-color:var(--bl);}
+.card.c-gy{border-top-color:var(--gy4);}
+.card.c-ye{border-top-color:var(--ye);}
+.c-lbl{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;
+  color:var(--gy5);margin-bottom:8px;}
+.c-val{font-size:32px;font-weight:800;line-height:1;color:var(--gy7);}
+.card.c-gr .c-val{color:var(--gr);}
+.card.c-re .c-val{color:var(--re);}
+.card.c-bl .c-val{color:var(--bl);}
+.card.c-gy .c-val{color:var(--gy4);}
+.card.c-ye .c-val{color:var(--ye);}
+.c-sub{font-size:12px;color:var(--gy5);margin-top:5px;}
+.c-sub b{color:var(--gy7);}
+.c-ico{position:absolute;right:14px;top:14px;font-size:26px;opacity:.1;}
+
+/* trend badge */
+.trend{display:inline-flex;align-items:center;gap:3px;font-size:11px;font-weight:700;
+  padding:2px 7px;border-radius:12px;margin-top:7px;}
+.trend.up{background:var(--gr-bg);color:var(--gr);}
+.trend.dn{background:var(--re-bg);color:var(--re);}
+.trend.eq{background:var(--gy2);color:var(--gy5);}
+.trend.na{background:var(--gy2);color:var(--gy4);font-weight:500;}
+
+/* vs campaign badge */
+.trend2{display:inline-flex;align-items:center;gap:3px;font-size:10px;font-weight:600;
+  padding:1px 6px;border-radius:10px;margin-left:4px;}
+.trend2.up{background:var(--gr-bg);color:var(--gr);}
+.trend2.dn{background:var(--re-bg);color:var(--re);}
+.trend2.eq{background:var(--gy2);color:var(--gy5);}
+
+/* ── INSIGHTS ── */
+.insights{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:12px;}
+.insight{background:#fff;border-radius:var(--r-sm);padding:14px 16px;
+  box-shadow:var(--sh);display:flex;gap:12px;align-items:flex-start;}
+.ins-ico{font-size:22px;flex-shrink:0;margin-top:1px;}
+.ins-title{font-size:12px;font-weight:700;color:var(--gy7);margin-bottom:3px;}
+.ins-body{font-size:11px;color:var(--gy5);line-height:1.5;}
+
+/* ── CHART CARDS ── */
+.cc{background:#fff;border-radius:var(--r);padding:20px;box-shadow:var(--sh);}
+.cc h3{font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.5px;
+  color:var(--gy5);margin-bottom:14px;}
+.cc .ch{position:relative;}
+
+/* ── SPLIT ROW ── */
+.split{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+.split3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;}
+@media(max-width:900px){.split,.split3{grid-template-columns:1fr;}}
+
+/* ── BAR ROWS ── */
+.br{display:flex;align-items:center;gap:8px;margin-bottom:9px;}
+.br-nm{font-size:11px;color:var(--gy5);width:115px;flex-shrink:0;line-height:1.3;}
+.br-tr{flex:1;height:9px;background:var(--gy2);border-radius:6px;overflow:hidden;}
+.br-fl{height:100%;border-radius:6px;background:var(--or);transition:width .5s ease;}
+.br-fl.gr{background:var(--gr);}
+.br-fl.re{background:var(--re);}
+.br-fl.bl{background:var(--bl);}
+.br-pct{font-size:11px;font-weight:700;color:var(--gy7);width:34px;text-align:right;}
+
+/* ── INTERACCION PILLS ── */
+.ip-row{display:flex;gap:10px;flex-wrap:wrap;}
+.ip{background:var(--gy1);border-radius:var(--r-sm);padding:12px 16px;flex:1;
+  min-width:120px;text-align:center;border:1px solid var(--gy2);}
+.ip-v{font-size:24px;font-weight:800;display:block;}
+.ip-v.gr{color:var(--gr);}
+.ip-v.re{color:var(--re);}
+.ip-v.or{color:var(--or);}
+.ip-l{font-size:10px;font-weight:700;color:var(--gy5);text-transform:uppercase;
+  letter-spacing:.3px;margin-top:3px;display:block;}
+
+/* ── HEATMAP ── */
+.hm-wrap{overflow-x:auto;}
+.hm{border-collapse:collapse;width:100%;min-width:400px;}
+.hm th,.hm td{padding:9px 14px;text-align:center;font-size:12px;}
+.hm th{font-weight:700;color:var(--gy5);background:var(--gy1);
+  text-transform:uppercase;letter-spacing:.4px;font-size:10px;}
+.hm td{border:1px solid var(--gy2);}
+.hm tr:hover td{filter:brightness(.95);}
+.hm td.hc-0{background:#fff;color:var(--gy5);}
+.hm td.hc-1{background:#D5F5E3;color:#1D6A3D;font-weight:700;}
+.hm td.hc-2{background:#FDEBD0;color:#784212;font-weight:700;}
+.hm td.hc-3{background:#FADBD8;color:#922B21;font-weight:700;}
+.hm td.hc-4{background:#C0392B;color:#fff;font-weight:700;}
+.hm-leg{display:flex;gap:10px;flex-wrap:wrap;margin-top:10px;align-items:center;}
+.hm-leg-item{display:flex;align-items:center;gap:5px;font-size:11px;color:var(--gy5);}
+.hm-leg-box{width:14px;height:14px;border-radius:3px;flex-shrink:0;}
+
+/* ── DATA TABLE ── */
+.dt{width:100%;border-collapse:collapse;font-size:12px;}
+.dt th{background:var(--or);color:#fff;padding:10px 12px;text-align:left;
+  font-weight:700;font-size:11px;text-transform:uppercase;letter-spacing:.4px;
+  position:sticky;top:0;}
+.dt td{padding:9px 12px;border-bottom:1px solid var(--gy2);}
+.dt tr:hover td{background:var(--or-bg);}
+.dt tr:nth-child(even) td{background:var(--gy1);}
+.dt tr:nth-child(even):hover td{background:var(--or-bg);}
+.dt-wrap{overflow-x:auto;border-radius:var(--r);box-shadow:var(--sh);border:1px solid var(--gy2);}
+.badge{display:inline-block;padding:2px 8px;border-radius:10px;font-size:10px;font-weight:700;}
+.badge.gr{background:var(--gr-bg);color:var(--gr);}
+.badge.re{background:var(--re-bg);color:var(--re);}
+.badge.gy{background:var(--gy2);color:var(--gy5);}
+.badge.ye{background:var(--ye-bg);color:#7D6608;}
+
+/* ── SUMMARY STRIP ── */
+.summary-strip{display:flex;gap:12px;background:#fff;border-radius:var(--r);
+  padding:14px 20px;box-shadow:var(--sh);flex-wrap:wrap;align-items:center;}
+.ss-item{display:flex;flex-direction:column;align-items:center;gap:2px;
+  padding:0 16px;border-right:1px solid var(--gy2);}
+.ss-item:last-child{border-right:none;}
+.ss-val{font-size:20px;font-weight:800;color:var(--gy7);}
+.ss-lbl{font-size:10px;font-weight:600;color:var(--gy5);text-transform:uppercase;
+  letter-spacing:.3px;white-space:nowrap;}
+
+/* ── OBJETIVO LINE ── */
+.obj-note{font-size:11px;color:var(--gy5);display:flex;align-items:center;gap:6px;margin-top:8px;}
+.obj-dot{width:10px;height:3px;background:#F39C12;border-radius:2px;display:inline-block;}
+
+/* ── SLOPE CHART ── */
+.slope-wrap{display:flex;gap:40px;align-items:flex-end;padding:10px 20px;}
+
+/* fade */
+.fade{animation:fi .2s ease;}
+@keyframes fi{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:none}}
+
+.no-d{font-size:20px;font-weight:700;color:var(--gy4);}
+.tag{display:inline-block;padding:1px 7px;border-radius:8px;font-size:10px;font-weight:700;}
+.tag.or{background:var(--or-bg);color:var(--or);}
+.tag.gr{background:var(--gr-bg);color:var(--gr);}
+.tag.re{background:var(--re-bg);color:var(--re);}
+</style>
+<style>
+/* ── LOGIN GATE ── */
+#loginGate{position:fixed;inset:0;background:linear-gradient(135deg,#B84A10 0%,#D85A1A 50%,#F06030 100%);
+  display:flex;align-items:center;justify-content:center;z-index:9999;}
+#loginGate.hidden{display:none;}
+.login-box{background:#fff;border-radius:20px;padding:40px 44px;width:360px;
+  box-shadow:0 20px 60px rgba(0,0,0,.25);text-align:center;}
+.login-logo{width:64px;height:64px;background:linear-gradient(135deg,#D85A1A,#B84A10);
+  border-radius:16px;display:flex;align-items:center;justify-content:center;
+  font-weight:900;font-size:32px;color:#fff;margin:0 auto 20px;}
+.login-title{font-size:20px;font-weight:800;color:#343A40;margin-bottom:4px;}
+.login-sub{font-size:13px;color:#6C757D;margin-bottom:28px;}
+.login-input{width:100%;padding:12px 16px;border:2px solid #E9ECEF;border-radius:10px;
+  font-size:15px;outline:none;transition:border .15s;font-family:inherit;}
+.login-input:focus{border-color:#D85A1A;}
+.login-btn{width:100%;margin-top:14px;padding:13px;background:linear-gradient(135deg,#D85A1A,#B84A10);
+  color:#fff;border:none;border-radius:10px;font-size:15px;font-weight:700;
+  cursor:pointer;transition:opacity .15s;font-family:inherit;}
+.login-btn:hover{opacity:.9;}
+.login-err{color:#C0392B;font-size:12px;margin-top:10px;min-height:18px;font-weight:600;}
+.login-footer{margin-top:22px;font-size:11px;color:#ADB5BD;}
+</style>
+</head>
+<body>
+
+<!-- ══ LOGIN GATE ══ -->
+<div id="loginGate">
+  <div class="login-box">
+    <div class="login-logo">Y</div>
+    <div class="login-title">Metas Directora · Maya</div>
+    <div class="login-sub">Ingresa la contraseña para acceder al dashboard</div>
+    <input class="login-input" id="loginPwd" type="password" placeholder="Contraseña"
+      onkeydown="if(event.key==='Enter') checkLogin()"/>
+    <button class="login-btn" onclick="checkLogin()">Ingresar →</button>
+    <div class="login-err" id="loginErr"></div>
+    <div class="login-footer">🔒 Acceso restringido · PERU · Yanbal</div>
+  </div>
+</div>
+
+<script>
+const PWD_HASH = 'b1cdd5335bc55103b231d322fbd7b811e3f6b1415ea425a441087832015efafb';
+const SESSION_KEY = 'metas_auth';
+
+async function checkLogin(){
+  const val = document.getElementById('loginPwd').value;
+  if(!val){ document.getElementById('loginErr').textContent='Ingresa la contraseña.'; return; }
+  const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(val));
+  const hash = Array.from(new Uint8Array(buf)).map(b=>b.toString(16).padStart(2,'0')).join('');
+  if(hash === PWD_HASH){
+    sessionStorage.setItem(SESSION_KEY,'1');
+    document.getElementById('loginGate').classList.add('hidden');
+  } else {
+    document.getElementById('loginErr').textContent='Contraseña incorrecta. Intenta de nuevo.';
+    document.getElementById('loginPwd').value='';
+    document.getElementById('loginPwd').focus();
+  }
+}
+// Auto-check session
+if(sessionStorage.getItem(SESSION_KEY)==='1'){
+  document.getElementById('loginGate').classList.add('hidden');
+}
+</script>
+
+<!-- HEADER -->
+<div class="hdr">
+  <div class="hdr-l">
+    <div class="logo">Y</div>
+    <div>
+      <div style="display:flex;align-items:center;">
+        <span class="hdr-title">Metas Directora</span>
+        <span class="hdr-badge">Maya · PERU</span>
+      </div>
+      <div class="hdr-sub">Seguimiento histórico de registro y cumplimiento de metas · <span id="hdrPais">PERU</span></div>
+    </div>
+  </div>
+  <div class="hdr-r" id="hdrDate"></div>
+</div>
+
+<!-- TABS -->
+<div class="tabs">
+  <div class="tab active" id="tab-dash" onclick="switchTab('dash')">
+    <span class="tab-icon">📊</span> Dashboard
+  </div>
+  <div class="tab" id="tab-hist" onclick="switchTab('hist')">
+    <span class="tab-icon">📈</span> Histórico
+  </div>
+  <div class="tab" id="tab-data" onclick="switchTab('data')">
+    <span class="tab-icon">📋</span> Tabla de Datos
+  </div>
+</div>
+
+<!-- FILTER BAR -->
+<div class="fbar" id="filterBar">
+  <div style="display:flex;align-items:center;gap:8px;">
+    <span class="flabel">🌎 País</span>
+    <div class="pills" id="ppills"></div>
+  </div>
+  <div class="fdiv"></div>
+  <div style="display:flex;align-items:center;gap:8px;">
+    <span class="flabel">Campaña</span>
+    <div class="pills" id="cpills"></div>
+  </div>
+  <div class="fdiv"></div>
+  <div style="display:flex;align-items:center;gap:8px;">
+    <span class="flabel">Semana</span>
+    <div class="pills" id="spills"></div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════ DASHBOARD VIEW ═══════════════════════════════ -->
+<div class="view active" id="view-dash"></div>
+
+<!-- ═══════════════════════════════ HISTÓRICO VIEW ═══════════════════════════════ -->
+<div class="view" id="view-hist"></div>
+
+<!-- ═══════════════════════════════ TABLA VIEW ═══════════════════════════════ -->
+<div class="view" id="view-data"></div>
+
+<script>
+// ────────────────────────────────────────────────────────
+// DATA
+// ────────────────────────────────────────────────────────
+const OBJ_REGISTRO = 80; // target % registro meta
+
+// Datos estructurados por País
+const ALL_DATA = {
+  'PERU': {
+  '202604':{
+    label:'Campaña 04', universo:3049,
+    semanas:{
+      1:{fecha:'03/04/2026',regMeta:null,regCnt:null,noReg:100,noRegCnt:3049,prom:null,cumple:0,cumpleCnt:0,noCumple:null,noCumpleCnt:null,incr:null,mant:null,red:null},
+      2:{fecha:'11/04/2026',regMeta:null,regCnt:null,noReg:100,noRegCnt:3049,prom:null,cumple:0,cumpleCnt:0,noCumple:null,noCumpleCnt:null,incr:null,mant:null,red:null},
+      3:{fecha:'19/04/2026',regMeta:null,regCnt:null,noReg:100,noRegCnt:3049,prom:null,cumple:0,cumpleCnt:0,noCumple:null,noCumpleCnt:null,incr:null,mant:null,red:null},
+      4:{fecha:'23/05/2026',regMeta:null,regCnt:null,noReg:100,noRegCnt:3049,prom:null,cumple:0,cumpleCnt:0,noCumple:null,noCumpleCnt:null,incr:null,mant:null,red:null},
+    }
+  },
+  '202605':{
+    label:'Campaña 05', universo:3552,
+    semanas:{
+      1:{fecha:'01/05/2026',regMeta:78,regCnt:2776,noReg:22,noRegCnt:776,prom:null,cumple:0,cumpleCnt:0,noCumple:100,noCumpleCnt:2776,incr:68,mant:28,red:4},
+      2:{fecha:'08/05/2026',regMeta:78,regCnt:2776,noReg:22,noRegCnt:776,prom:null,cumple:0,cumpleCnt:8,noCumple:100,noCumpleCnt:2768,incr:68,mant:28,red:4},
+      3:{fecha:'15/05/2026',regMeta:78,regCnt:2776,noReg:22,noRegCnt:776,prom:null,cumple:1,cumpleCnt:33,noCumple:99,noCumpleCnt:2743,incr:68,mant:28,red:4},
+      4:{fecha:'19/06/2026',regMeta:78,regCnt:2776,noReg:22,noRegCnt:776,prom:null,cumple:29,cumpleCnt:809,noCumple:71,noCumpleCnt:1967,incr:68,mant:28,red:4},
+    }
+  },
+  '202606':{
+    label:'Campaña 06', universo:3552,
+    semanas:{
+      1:{fecha:'29/05/2026',regMeta:76,regCnt:2688,noReg:24,noRegCnt:864,prom:78,cumple:0,cumpleCnt:0,noCumple:100,noCumpleCnt:2688,incr:90,mant:6,red:3},
+      2:{fecha:'06/06/2026',regMeta:76,regCnt:2688,noReg:24,noRegCnt:864,prom:78,cumple:0,cumpleCnt:2,noCumple:100,noCumpleCnt:2686,incr:90,mant:6,red:3},
+      3:{fecha:'13/06/2026',regMeta:76,regCnt:2688,noReg:24,noRegCnt:864,prom:78,cumple:1,cumpleCnt:17,noCumple:99,noCumpleCnt:2671,incr:90,mant:6,red:3},
+      4:{fecha:'22/06/2026',regMeta:76,regCnt:2688,noReg:24,noRegCnt:864,prom:78,cumple:23,cumpleCnt:617,noCumple:77,noCumpleCnt:2071,incr:90,mant:6,red:3},
+    }
+  }
+  }, // end PERU
+  // ── Otros países (pendiente de datos) ──
+  'COLOMBIA':{ '202605':{label:'Campaña 05',universo:null,semanas:{1:{fecha:'–',regMeta:null,regCnt:null,noReg:null,noRegCnt:null,prom:null,cumple:null,cumpleCnt:null,noCumple:null,noCumpleCnt:null,incr:null,mant:null,red:null},2:{fecha:'–',regMeta:null,regCnt:null,noReg:null,noRegCnt:null,prom:null,cumple:null,cumpleCnt:null,noCumple:null,noCumpleCnt:null,incr:null,mant:null,red:null},3:{fecha:'–',regMeta:null,regCnt:null,noReg:null,noRegCnt:null,prom:null,cumple:null,cumpleCnt:null,noCumple:null,noCumpleCnt:null,incr:null,mant:null,red:null},4:{fecha:'–',regMeta:null,regCnt:null,noReg:null,noRegCnt:null,prom:null,cumple:null,cumpleCnt:null,noCumple:null,noCumpleCnt:null,incr:null,mant:null,red:null}}} },
+  'ECUADOR':{ '202605':{label:'Campaña 05',universo:null,semanas:{1:{fecha:'–',regMeta:null,regCnt:null,noReg:null,noRegCnt:null,prom:null,cumple:null,cumpleCnt:null,noCumple:null,noCumpleCnt:null,incr:null,mant:null,red:null},2:{fecha:'–',regMeta:null,regCnt:null,noReg:null,noRegCnt:null,prom:null,cumple:null,cumpleCnt:null,noCumple:null,noCumpleCnt:null,incr:null,mant:null,red:null},3:{fecha:'–',regMeta:null,regCnt:null,noReg:null,noRegCnt:null,prom:null,cumple:null,cumpleCnt:null,noCumple:null,noCumpleCnt:null,incr:null,mant:null,red:null},4:{fecha:'–',regMeta:null,regCnt:null,noReg:null,noRegCnt:null,prom:null,cumple:null,cumpleCnt:null,noCumple:null,noCumpleCnt:null,incr:null,mant:null,red:null}}} },
+  'BOLIVIA':{ '202605':{label:'Campaña 05',universo:null,semanas:{1:{fecha:'–',regMeta:null,regCnt:null,noReg:null,noRegCnt:null,prom:null,cumple:null,cumpleCnt:null,noCumple:null,noCumpleCnt:null,incr:null,mant:null,red:null},2:{fecha:'–',regMeta:null,regCnt:null,noReg:null,noRegCnt:null,prom:null,cumple:null,cumpleCnt:null,noCumple:null,noCumpleCnt:null,incr:null,mant:null,red:null},3:{fecha:'–',regMeta:null,regCnt:null,noReg:null,noRegCnt:null,prom:null,cumple:null,cumpleCnt:null,noCumple:null,noCumpleCnt:null,incr:null,mant:null,red:null},4:{fecha:'–',regMeta:null,regCnt:null,noReg:null,noRegCnt:null,prom:null,cumple:null,cumpleCnt:null,noCumple:null,noCumpleCnt:null,incr:null,mant:null,red:null}}} },
+};
+
+// ────────────────────────────────────────────────────────
+// STATE
+// ────────────────────────────────────────────────────────
+const PAISES = Object.keys(ALL_DATA);
+let selP = 'PERU';
+let CAMP = ALL_DATA[selP];
+let CAMP_KEYS = Object.keys(CAMP);
+let selC = '202606', selS = 4, curTab = 'dash';
+const charts = {};
+
+function setCountry(p){
+  selP = p;
+  CAMP = ALL_DATA[p];
+  CAMP_KEYS = Object.keys(CAMP);
+  selC = CAMP_KEYS[CAMP_KEYS.length-1];
+  selS = 4;
+  document.getElementById('hdrPais').textContent = p;
+  buildFilters();
+  renderDash();
+  renderHist();
+  renderData();
+}
+
+// ────────────────────────────────────────────────────────
+// UTILS
+// ────────────────────────────────────────────────────────
+const fmt = n => n!=null ? Number(n).toLocaleString('es-PE') : '–';
+const pct = n => n!=null ? n+'%' : '–';
+const noD = () => '<span class="no-d">–</span>';
+
+function trendBadge(now, prev, invertGood=false){
+  if(now==null||prev==null) return '<span class="trend na">Sin dato anterior</span>';
+  const d = now - prev;
+  if(Math.abs(d)<0.5) return `<span class="trend eq">= Sin cambio</span>`;
+  const isGood = invertGood ? d<0 : d>0;
+  const cls = isGood ? 'up' : 'dn';
+  const arr = d>0 ? '▲' : '▼';
+  return `<span class="trend ${cls}">${arr} ${Math.abs(d)}pp vs sem anterior</span>`;
+}
+function trendBadgeVsCamp(now, prev, invertGood=false){
+  if(now==null||prev==null) return '';
+  const d = now - prev;
+  if(Math.abs(d)<0.5) return `<span class="trend2 eq">= C.ant</span>`;
+  const isGood = invertGood ? d<0 : d>0;
+  const cls = isGood ? 'up' : 'dn';
+  const arr = d>0 ? '▲' : '▼';
+  return `<span class="trend2 ${cls}">${arr}${Math.abs(d)}pp C.ant</span>`;
+}
+function hmClass(noRegPct){
+  if(noRegPct==null) return 'hc-0';
+  if(noRegPct<=20) return 'hc-1';
+  if(noRegPct<=35) return 'hc-2';
+  if(noRegPct<=60) return 'hc-3';
+  return 'hc-4';
+}
+function destroyChart(id){ if(charts[id]){charts[id].destroy();delete charts[id];} }
+
+// ────────────────────────────────────────────────────────
+// INIT
+// ────────────────────────────────────────────────────────
+document.addEventListener('DOMContentLoaded', ()=>{
+  document.getElementById('hdrDate').innerHTML =
+    new Date().toLocaleDateString('es-PE',{weekday:'long',year:'numeric',month:'long',day:'numeric'})
+    +'<br><span style="opacity:.7">Campaña actual: 202607</span>';
+  buildFilters();
+  renderDash();
+  renderHist();
+  renderData();
+});
+
+// ────────────────────────────────────────────────────────
+// TABS
+// ────────────────────────────────────────────────────────
+function switchTab(t){
+  curTab = t;
+  ['dash','hist','data'].forEach(x=>{
+    document.getElementById('tab-'+x).classList.toggle('active', x===t);
+    document.getElementById('view-'+x).classList.toggle('active', x===t);
+  });
+  document.getElementById('filterBar').style.display = (t==='data') ? 'none' : 'flex';
+}
+
+// ────────────────────────────────────────────────────────
+// FILTERS
+// ────────────────────────────────────────────────────────
+function buildFilters(){
+  // País pills
+  const pp = document.getElementById('ppills');
+  pp.innerHTML='';
+  PAISES.forEach(p=>{
+    const b=document.createElement('button');
+    const hasData = p==='PERU'; // only PERU has real data
+    b.className='pill'+(p===selP?' on':'');
+    b.textContent = p + (hasData ? '' : ' 🔒');
+    b.title = hasData ? p : p+' — datos pendientes';
+    b.style.opacity = hasData ? '1' : '.55';
+    b.onclick=()=>{ if(p!==selP) setCountry(p); };
+    pp.appendChild(b);
+  });
+
+  // Campaña pills
+  const cp = document.getElementById('cpills');
+  cp.innerHTML = '';
+  CAMP_KEYS.forEach(k=>{
+    const b=document.createElement('button');
+    b.className='pill'+(k===selC?' on':'');
+    b.textContent=k;
+    b.onclick=()=>{selC=k;selS=4;buildFilters();renderDash();renderHist();};
+    cp.appendChild(b);
+  });
+  const sp = document.getElementById('spills');
+  sp.innerHTML='';
+  Object.keys(CAMP[selC].semanas).forEach(s=>{
+    const b=document.createElement('button');
+    b.className='pill'+(+s===selS?' on':'');
+    b.textContent='Sem '+s;
+    b.onclick=()=>{selS=+s;buildFilters();renderDash();};
+    sp.appendChild(b);
+  });
+}
+
+// ────────────────────────────────────────────────────────
+// PREV HELPERS
+// ────────────────────────────────────────────────────────
+function prevSem(c,s){ return s>1 ? CAMP[c].semanas[s-1] : null; }
+function prevCampSameSem(c,s){
+  const ci = CAMP_KEYS.indexOf(c);
+  if(ci<=0) return null;
+  const pk = CAMP_KEYS[ci-1];
+  return CAMP[pk].semanas[s] || null;
+}
+
+// ════════════════════════════════════════════════════════
+// DASHBOARD VIEW
+// ════════════════════════════════════════════════════════
+function renderDash(){
+  const c = CAMP[selC], d = c.semanas[selS];
+  const ps = prevSem(selC,selS), pcs = prevCampSameSem(selC,selS);
+  const el = document.getElementById('view-dash');
+  el.innerHTML=''; el.classList.remove('fade'); void el.offsetWidth; el.classList.add('fade');
+
+  // ── Alert banner ──
+  let alertHtml='';
+  if(d.noReg===100){
+    alertHtml=`<div class="alert-bar bad">⚠️ <strong>Sin registros:</strong> Esta combinación campaña/semana no tiene datos de registro de metas.</div>`;
+  } else if(d.regMeta!==null && d.regMeta < OBJ_REGISTRO){
+    const gap = OBJ_REGISTRO - d.regMeta;
+    alertHtml=`<div class="alert-bar warn">📌 <strong>Bajo el objetivo:</strong> El % de Registro (${d.regMeta}%) está ${gap}pp por debajo del objetivo de ${OBJ_REGISTRO}% — ${fmt(Math.round(gap/100*c.universo))} directoras adicionales requeridas.</div>`;
+  } else if(d.regMeta!==null && d.regMeta >= OBJ_REGISTRO){
+    alertHtml=`<div class="alert-bar good">✅ <strong>Objetivo alcanzado:</strong> El registro de metas (${d.regMeta}%) supera el objetivo del ${OBJ_REGISTRO}%.</div>`;
+  }
+  if(alertHtml) el.insertAdjacentHTML('beforeend',alertHtml);
+
+  // ── SECTION: Adopción ──
+  el.insertAdjacentHTML('beforeend','<div class="slabel">Adopción</div>');
+  const tU = trendBadge(c.universo, prevCampSameSem(selC,selS)?.universo ?? CAMP[CAMP_KEYS[CAMP_KEYS.indexOf(selC)-1]]?.universo, false);
+  el.insertAdjacentHTML('beforeend',`<div class="cg">
+    <div class="card">
+      <div class="c-ico">👥</div>
+      <div class="c-lbl">Universo Directoras</div>
+      <div class="c-val">${fmt(c.universo)}</div>
+      <div class="c-sub">Total activas · <b>${selC}</b></div>
+    </div>
+    <div class="card ${d.regMeta!=null&&d.regMeta>=OBJ_REGISTRO?'c-gr':(d.regMeta!=null?'c-ye':'c-gy')}">
+      <div class="c-ico">📋</div>
+      <div class="c-lbl">% DIR Registra Meta</div>
+      <div class="c-val">${d.regMeta!=null?d.regMeta+'%':noD()}</div>
+      <div class="c-sub">${d.regCnt!=null?fmt(d.regCnt)+' directoras':'Sin datos'}</div>
+      ${trendBadge(d.regMeta, ps?.regMeta)}
+      ${trendBadgeVsCamp(d.regMeta, pcs?.regMeta)}
+    </div>
+    <div class="card ${d.noReg!=null&&d.noReg>30?'c-re':(d.noReg!=null?'c-ye':'c-gy')}">
+      <div class="c-ico">🚫</div>
+      <div class="c-lbl">% DIR No Registró</div>
+      <div class="c-val">${pct(d.noReg)}</div>
+      <div class="c-sub">${d.noRegCnt!=null?fmt(d.noRegCnt)+' directoras':''}</div>
+      ${trendBadge(d.noReg, ps?.noReg, true)}
+      ${trendBadgeVsCamp(d.noReg, pcs?.noReg, true)}
+    </div>
+    <div class="card c-bl">
+      <div class="c-ico">📊</div>
+      <div class="c-lbl">% Prom Reg últ. 3 Camp</div>
+      <div class="c-val">${d.prom!=null?d.prom+'%':noD()}</div>
+      <div class="c-sub">${d.prom!=null?'Promedio histórico':'N/D esta campaña'}</div>
+    </div>
+  </div>`);
+
+  // ── SECTION: Cumplimiento ──
+  el.insertAdjacentHTML('beforeend','<div class="slabel">Cumplimiento</div>');
+  if(d.noCumple!=null){
+    el.insertAdjacentHTML('beforeend',`<div class="cg">
+      <div class="card ${d.cumple>=30?'c-gr':(d.cumple>=10?'c-ye':'c-gy')}">
+        <div class="c-ico">🎯</div>
+        <div class="c-lbl">DIR Cumple Metas</div>
+        <div class="c-val">${pct(d.cumple)}</div>
+        <div class="c-sub">${fmt(d.cumpleCnt)} directoras</div>
+        ${trendBadge(d.cumple, ps?.cumple)}
+        ${trendBadgeVsCamp(d.cumple, pcs?.cumple)}
+      </div>
+      <div class="card ${d.noCumple<=70?'c-ye':'c-re'}">
+        <div class="c-ico">❌</div>
+        <div class="c-lbl">DIR No Cumple Meta</div>
+        <div class="c-val">${pct(d.noCumple)}</div>
+        <div class="c-sub">${fmt(d.noCumpleCnt)} directoras</div>
+        ${trendBadge(d.noCumple, ps?.noCumple, true)}
+        ${trendBadgeVsCamp(d.noCumple, pcs?.noCumple, true)}
+      </div>
+    </div>`);
+  } else {
+    el.insertAdjacentHTML('beforeend','<div style="background:#fff;border-radius:var(--r);padding:20px;box-shadow:var(--sh);color:var(--gy4);font-size:13px;">Sin datos de cumplimiento para esta campaña/semana</div>');
+  }
+
+  // ── Barra visual + Interacción ──
+  if(d.incr!=null){
+    el.insertAdjacentHTML('beforeend','<div class="slabel">Interacción de Meta</div>');
+    el.insertAdjacentHTML('beforeend',`<div class="ip-row">
+      <div class="ip"><span class="ip-v gr">${d.incr}%</span><span class="ip-l">Incrementa Meta</span></div>
+      <div class="ip"><span class="ip-v or">${d.mant}%</span><span class="ip-l">Mantiene Meta</span></div>
+      <div class="ip"><span class="ip-v re">${d.red}%</span><span class="ip-l">Redujo Meta</span></div>
+    </div>`);
+  }
+
+  // ── SECTION: Gráficos ──
+  el.insertAdjacentHTML('beforeend','<div class="slabel">Análisis Visual</div>');
+  el.insertAdjacentHTML('beforeend',`<div class="split">
+    <div class="cc">
+      <h3>Evolución semanal · ${selC}</h3>
+      <div class="ch" style="height:200px;"><canvas id="dc1"></canvas></div>
+      <div class="obj-note"><span class="obj-dot"></span>Objetivo registro: ${OBJ_REGISTRO}%</div>
+    </div>
+    <div class="cc">
+      <h3>Resumen registros · ${selC} Sem ${selS}</h3>
+      ${buildBarsHTML(d)}
+    </div>
+  </div>`);
+
+  // ── SECTION: Insights automáticos ──
+  el.insertAdjacentHTML('beforeend','<div class="slabel">Insights Automáticos</div>');
+  el.insertAdjacentHTML('beforeend',`<div class="insights">${buildInsights(selC,selS,d,ps,pcs,c)}</div>`);
+
+  setTimeout(()=>{ buildDashChart1(); }, 40);
+}
+
+function buildInsights(c,s,d,ps,pcs,camp){
+  const ins = [];
+  // Registro vs objetivo
+  if(d.regMeta!=null){
+    const gap = d.regMeta - OBJ_REGISTRO;
+    if(gap>=0) ins.push({ico:'✅',t:'Objetivo cumplido',b:`La campaña ${c} alcanzó ${d.regMeta}% de registro, superando el objetivo de ${OBJ_REGISTRO}% en ${gap}pp.`});
+    else ins.push({ico:'⚠️',t:'Bajo el objetivo',b:`Faltan ${-gap}pp para alcanzar el objetivo de ${OBJ_REGISTRO}%. Son ~${fmt(Math.round(-gap/100*camp.universo))} directoras adicionales.`});
+  }
+  // Tendencia vs campaña anterior
+  if(pcs?.regMeta!=null&&d.regMeta!=null){
+    const d2=d.regMeta-pcs.regMeta;
+    if(d2<0) ins.push({ico:'📉',t:'Retroceso vs campaña anterior',b:`El registro bajó ${Math.abs(d2)}pp respecto a la semana ${s} de la campaña anterior (${pcs.regMeta}% → ${d.regMeta}%).`});
+    else if(d2>0) ins.push({ico:'📈',t:'Mejora vs campaña anterior',b:`El registro subió ${d2}pp respecto a la semana ${s} de la campaña anterior (${pcs.regMeta}% → ${d.regMeta}%).`});
+    else ins.push({ico:'➡️',t:'Sin cambio vs campaña anterior',b:`El registro se mantuvo igual que la semana ${s} de la campaña anterior (${d.regMeta}%).`});
+  }
+  // Promedio histórico
+  if(d.prom!=null&&d.regMeta!=null){
+    const dif=d.regMeta-d.prom;
+    if(Math.abs(dif)>=2) ins.push({ico:'📌',t:'Comparativa promedio 3 campañas',b:`El registro actual (${d.regMeta}%) está ${Math.abs(dif)}pp ${dif>0?'por encima':'por debajo'} del promedio de las últimas 3 campañas (${d.prom}%).`});
+  }
+  // Cumplimiento final
+  if(d.cumple!=null&&s===4){
+    if(d.cumple>=25) ins.push({ico:'🏆',t:'Buen cierre de campaña',b:`Al cierre (Sem 4), el ${d.cumple}% de directoras cumplió su meta — ${fmt(d.cumpleCnt)} directoras.`});
+    else ins.push({ico:'🔔',t:'Bajo cumplimiento al cierre',b:`Solo el ${d.cumple}% alcanzó su meta al cierre de campaña. ${fmt(d.noCumpleCnt)} directoras no cumplieron.`});
+  }
+  // Interacción
+  if(d.incr!=null&&d.incr>=70) ins.push({ico:'🚀',t:'Alta tasa de incremento',b:`El ${d.incr}% de las directoras con meta incrementaron su objetivo, señal de ambición y confianza en el ciclo.`});
+  // No registró notable
+  if(d.noReg>=50) ins.push({ico:'🔴',t:'Alto porcentaje sin registrar',b:`${pct(d.noReg)} del universo no registró meta. Foco recomendado en activación de directoras inactivas.`});
+
+  if(ins.length===0) ins.push({ico:'ℹ️',t:'Sin insights adicionales',b:'No hay patrones destacables para esta combinación de campaña y semana.'});
+  return ins.map(i=>`<div class="insight"><div class="ins-ico">${i.ico}</div><div><div class="ins-title">${i.t}</div><div class="ins-body">${i.b}</div></div></div>`).join('');
+}
+
+function buildBarsHTML(d){
+  if(!d.regMeta && d.noReg===100) return `<div class="br"><div class="br-nm">No Registró</div><div class="br-tr"><div class="br-fl re" style="width:100%"></div></div><div class="br-pct">100%</div></div><p style="font-size:11px;color:var(--gy4);margin-top:10px;">Sin registros en esta campaña</p>`;
+  return `
+    ${d.regMeta!=null?`<div class="br"><div class="br-nm">Registra Meta</div><div class="br-tr"><div class="br-fl gr" style="width:${d.regMeta}%"></div></div><div class="br-pct">${d.regMeta}%</div></div>`:''}
+    <div class="br"><div class="br-nm">No Registró</div><div class="br-tr"><div class="br-fl re" style="width:${d.noReg||0}%"></div></div><div class="br-pct">${d.noReg||0}%</div></div>
+    ${d.noCumple!=null?`<hr style="border:none;border-top:1px solid var(--gy2);margin:8px 0;">
+    <div class="br"><div class="br-nm">Cumple Metas</div><div class="br-tr"><div class="br-fl gr" style="width:${d.cumple||0}%"></div></div><div class="br-pct">${d.cumple||0}%</div></div>
+    <div class="br"><div class="br-nm">No Cumple</div><div class="br-tr"><div class="br-fl re" style="width:${d.noCumple||0}%"></div></div><div class="br-pct">${d.noCumple||0}%</div></div>`:''}
+    ${d.incr!=null?`<hr style="border:none;border-top:1px solid var(--gy2);margin:8px 0;">
+    <div class="br"><div class="br-nm">Incrementa</div><div class="br-tr"><div class="br-fl gr" style="width:${d.incr}%"></div></div><div class="br-pct">${d.incr}%</div></div>
+    <div class="br"><div class="br-nm">Mantiene</div><div class="br-tr"><div class="br-fl bl" style="width:${d.mant}%"></div></div><div class="br-pct">${d.mant}%</div></div>
+    <div class="br"><div class="br-nm">Redujo</div><div class="br-tr"><div class="br-fl re" style="width:${d.red}%"></div></div><div class="br-pct">${d.red}%</div></div>`:''}
+  `;
+}
+
+function buildDashChart1(){
+  destroyChart('dc1');
+  const cv=document.getElementById('dc1'); if(!cv)return;
+  const c=CAMP[selC]; const labels=[]; const reg=[]; const noR=[]; const cumple=[];
+  Object.entries(c.semanas).forEach(([s,d])=>{ labels.push('Sem '+s); reg.push(d.regMeta); noR.push(d.noReg); cumple.push(d.cumple); });
+  charts['dc1']=new Chart(cv,{
+    type:'bar',
+    data:{labels,datasets:[
+      {label:'% Registra Meta',data:reg,backgroundColor:'rgba(39,174,96,.7)',borderColor:'#27AE60',borderWidth:1.5,borderRadius:6,order:2},
+      {label:'% No Registró',data:noR,backgroundColor:'rgba(192,57,43,.65)',borderColor:'#C0392B',borderWidth:1.5,borderRadius:6,order:2},
+      {label:'% Cumple Metas',data:cumple,type:'line',borderColor:'#2980B9',backgroundColor:'rgba(41,128,185,.1)',borderWidth:2.5,pointRadius:5,pointBackgroundColor:'#2980B9',tension:.3,fill:true,order:1},
+    ]},
+    options:{responsive:true,maintainAspectRatio:false,
+      plugins:{
+        legend:{position:'top',labels:{font:{size:10},padding:10,boxWidth:12}},
+        annotation:{annotations:{obj:{type:'line',yMin:OBJ_REGISTRO,yMax:OBJ_REGISTRO,borderColor:'#F39C12',borderWidth:2,borderDash:[6,4],label:{content:'Objetivo '+OBJ_REGISTRO+'%',display:true,position:'end',backgroundColor:'#F39C12',color:'#fff',font:{size:10}}}}}
+      },
+      scales:{
+        x:{grid:{display:false},ticks:{font:{size:10}}},
+        y:{min:0,max:100,ticks:{callback:v=>v+'%',font:{size:10}},grid:{color:'rgba(0,0,0,.05)'}}
+      }
+    }
+  });
+}
+
+// ════════════════════════════════════════════════════════
+// HISTÓRICO VIEW
+// ════════════════════════════════════════════════════════
+function renderHist(){
+  const el=document.getElementById('view-hist');
+  el.innerHTML=''; el.classList.remove('fade'); void el.offsetWidth; el.classList.add('fade');
+
+  // ── Summary strip ──
+  el.insertAdjacentHTML('beforeend','<div class="slabel">Resumen General · Campañas con Datos</div>');
+  const strips=[]; let bestReg=null,bestCampR='',worstNoReg=null,worstCamp='';
+  CAMP_KEYS.forEach(k=>{
+    const s4=CAMP[k].semanas[4];
+    if(s4.regMeta!=null){
+      if(bestReg===null||s4.regMeta>bestReg){bestReg=s4.regMeta;bestCampR=k;}
+      if(worstNoReg===null||s4.noReg>worstNoReg){worstNoReg=s4.noReg;worstCamp=k;}
+    }
+  });
+  const c05s4=CAMP['202605'].semanas[4], c06s4=CAMP['202606'].semanas[4];
+  el.insertAdjacentHTML('beforeend',`<div class="summary-strip">
+    <div class="ss-item"><span class="ss-val">${CAMP_KEYS.length}</span><span class="ss-lbl">Campañas</span></div>
+    <div class="ss-item"><span class="ss-val" style="color:var(--gr)">${bestReg!=null?bestReg+'%':'–'}</span><span class="ss-lbl">Mejor Registro (${bestCampR})</span></div>
+    <div class="ss-item"><span class="ss-val" style="color:var(--re)">${worstNoReg!=null?worstNoReg+'%':'–'}</span><span class="ss-lbl">Mayor No Registró (${worstCamp})</span></div>
+    <div class="ss-item"><span class="ss-val" style="color:var(--bl)">${c05s4?.cumple!=null?c05s4.cumple+'%':'–'}</span><span class="ss-lbl">Cumple Meta C05 S4</span></div>
+    <div class="ss-item"><span class="ss-val" style="color:var(--or)">${c06s4?.cumple!=null?c06s4.cumple+'%':'–'}</span><span class="ss-lbl">Cumple Meta C06 S4</span></div>
+    <div class="ss-item"><span class="ss-val">3,552</span><span class="ss-lbl">Universo (C05–C06)</span></div>
+  </div>`);
+
+  // ── SECTION: Evolución temporal full ──
+  el.insertAdjacentHTML('beforeend','<div class="slabel">Evolución Completa por Semana · Todas las Campañas</div>');
+  el.insertAdjacentHTML('beforeend',`<div class="cc" style="grid-column:1/-1">
+    <h3>% Registra Meta y % No Registró — todas las campañas y semanas</h3>
+    <div class="ch" style="height:240px;"><canvas id="hc1"></canvas></div>
+    <div class="obj-note"><span class="obj-dot"></span>Línea objetivo: ${OBJ_REGISTRO}%</div>
+  </div>`);
+
+  // ── SECTION: Progresión cumplimiento semanal ──
+  el.insertAdjacentHTML('beforeend','<div class="slabel">Progresión de Cumplimiento de Metas por Semana</div>');
+  el.insertAdjacentHTML('beforeend',`<div class="split">
+    <div class="cc">
+      <h3>% Cumple Metas · evolución semanal por campaña</h3>
+      <div class="ch" style="height:200px;"><canvas id="hc2"></canvas></div>
+    </div>
+    <div class="cc">
+      <h3>Comparativo Final (Sem 4) · Registro vs Cumplimiento</h3>
+      <div class="ch" style="height:200px;"><canvas id="hc3"></canvas></div>
+    </div>
+  </div>`);
+
+  // ── SECTION: Heatmap ──
+  el.insertAdjacentHTML('beforeend','<div class="slabel">Heatmap % DIR No Registró · Campaña × Semana</div>');
+  el.insertAdjacentHTML('beforeend',`<div class="cc">
+    <h3>Intensidad de no-registro por combinación campaña/semana</h3>
+    <div class="hm-wrap">${buildHeatmap()}</div>
+    <div class="hm-leg">
+      <span style="font-size:11px;font-weight:700;color:var(--gy5);">Leyenda:</span>
+      <div class="hm-leg-item"><div class="hm-leg-box" style="background:#D5F5E3"></div>≤ 20% (Excelente)</div>
+      <div class="hm-leg-item"><div class="hm-leg-box" style="background:#FDEBD0"></div>21–35% (Atención)</div>
+      <div class="hm-leg-item"><div class="hm-leg-box" style="background:#FADBD8"></div>36–60% (Crítico)</div>
+      <div class="hm-leg-item"><div class="hm-leg-box" style="background:#C0392B"></div>&gt;60% (Sin datos/Alarma)</div>
+    </div>
+  </div>`);
+
+  // ── SECTION: Pendiente slope ──
+  el.insertAdjacentHTML('beforeend','<div class="slabel">Comparativo Campaña 05 vs 06 · Semana Final (4)</div>');
+  el.insertAdjacentHTML('beforeend',`<div class="cc">
+    <h3>Variación de indicadores clave entre campañas (Semana 4)</h3>
+    <div class="ch" style="height:200px;"><canvas id="hc4"></canvas></div>
+  </div>`);
+
+  setTimeout(()=>{ buildHistCharts(); }, 40);
+}
+
+function buildHeatmap(){
+  let html=`<table class="hm"><thead><tr><th>Campaña</th><th>Sem 1</th><th>Sem 2</th><th>Sem 3</th><th>Sem 4</th><th>Universo</th></tr></thead><tbody>`;
+  CAMP_KEYS.forEach(k=>{
+    const c=CAMP[k];
+    html+=`<tr><td style="font-weight:700;color:var(--gy7);background:var(--gy1);text-align:left">${k}</td>`;
+    [1,2,3,4].forEach(s=>{
+      const d=c.semanas[s];
+      const cls=hmClass(d.noReg);
+      const val=d.noReg!=null?d.noReg+'%':'–';
+      html+=`<td class="${cls}" title="${k} Sem${s}: No Registró ${val}">${val}</td>`;
+    });
+    html+=`<td style="font-weight:600;color:var(--gy6)">${fmt(c.universo)}</td></tr>`;
+  });
+  html+=`</tbody></table>`;
+  return html;
+}
+
+function buildHistCharts(){
+  // ── Chart 1: Línea completa todas las campañas ──
+  destroyChart('hc1');
+  const cv1=document.getElementById('hc1'); if(!cv1)return;
+  const allLabels=[]; const datasets=[];
+  const COLORS={regMeta:['#27AE60','#2ECC71','#1ABC9C'],noReg:['#C0392B','#E74C3C','#E91E63']};
+  // Construir labels (todas las semanas de todas las campañas)
+  CAMP_KEYS.forEach((k,ki)=>{
+    Object.keys(CAMP[k].semanas).forEach(s=>{ allLabels.push(k+' S'+s); });
+    // dataset registro
+    const regData=[]; const noData=[];
+    Object.values(CAMP[k].semanas).forEach(d=>{ regData.push(d.regMeta); noData.push(d.noReg); });
+    const baseIdx=ki;
+    datasets.push({label:'Reg '+k,data:regData,borderColor:COLORS.regMeta[baseIdx],backgroundColor:'transparent',borderWidth:2.5,pointRadius:4,pointBackgroundColor:COLORS.regMeta[baseIdx],tension:.3,spanGaps:true});
+    datasets.push({label:'NoReg '+k,data:noData,borderColor:COLORS.noReg[baseIdx],backgroundColor:'transparent',borderWidth:2,borderDash:[4,3],pointRadius:4,pointBackgroundColor:COLORS.noReg[baseIdx],tension:.3,spanGaps:true});
+  });
+  // Flatten data per campaign/week
+  const flatReg={}, flatNoReg={};
+  CAMP_KEYS.forEach(k=>{
+    Object.entries(CAMP[k].semanas).forEach(([s,d])=>{ const lbl=k+' S'+s; flatReg[lbl]=d.regMeta; flatNoReg[lbl]=d.noReg; });
+  });
+  const uLabels=allLabels;
+  const ds2=CAMP_KEYS.map((k,ki)=>({
+    label:'Reg '+k,
+    data:uLabels.map(l=>l.startsWith(k)?flatReg[l]:null),
+    borderColor:COLORS.regMeta[ki],backgroundColor:'transparent',
+    borderWidth:2.5,pointRadius:4,pointBackgroundColor:COLORS.regMeta[ki],tension:.3,spanGaps:false
+  })).concat(CAMP_KEYS.map((k,ki)=>({
+    label:'NoReg '+k,
+    data:uLabels.map(l=>l.startsWith(k)?flatNoReg[l]:null),
+    borderColor:COLORS.noReg[ki],backgroundColor:'transparent',
+    borderWidth:2,borderDash:[5,4],pointRadius:4,pointBackgroundColor:COLORS.noReg[ki],tension:.3,spanGaps:false
+  })));
+
+  charts['hc1']=new Chart(cv1,{
+    type:'line',data:{labels:uLabels,datasets:ds2},
+    options:{responsive:true,maintainAspectRatio:false,
+      plugins:{legend:{position:'top',labels:{font:{size:10},padding:8,boxWidth:12}}},
+      scales:{
+        x:{grid:{display:false},ticks:{font:{size:9},maxRotation:35}},
+        y:{min:0,max:100,ticks:{callback:v=>v+'%',font:{size:10}},grid:{color:'rgba(0,0,0,.05)'},
+          afterDataLimits(axis){axis.max=100;}}
+      }
+    }
+  });
+
+  // ── Chart 2: Cumplimiento por semana por campaña ──
+  destroyChart('hc2');
+  const cv2=document.getElementById('hc2'); if(!cv2)return;
+  const semLabels=['Sem 1','Sem 2','Sem 3','Sem 4'];
+  const cumDs=CAMP_KEYS.filter(k=>CAMP[k].semanas[1].cumple!=null||CAMP[k].semanas[4].cumple!=null).map((k,ki)=>({
+    label:k,
+    data:[1,2,3,4].map(s=>CAMP[k].semanas[s].cumple),
+    borderColor:['#2980B9','#27AE60','#D85A1A'][ki]||'#888',
+    backgroundColor:'transparent',borderWidth:2.5,
+    pointRadius:5,pointBackgroundColor:['#2980B9','#27AE60','#D85A1A'][ki]||'#888',
+    tension:.3,spanGaps:true
+  }));
+  charts['hc2']=new Chart(cv2,{
+    type:'line',data:{labels:semLabels,datasets:cumDs},
+    options:{responsive:true,maintainAspectRatio:false,
+      plugins:{legend:{position:'top',labels:{font:{size:10},padding:8,boxWidth:12}}},
+      scales:{x:{grid:{display:false},ticks:{font:{size:10}}},y:{min:0,max:100,ticks:{callback:v=>v+'%',font:{size:10}},grid:{color:'rgba(0,0,0,.05)'}}}
+    }
+  });
+
+  // ── Chart 3: Radar/bar comparativo final ──
+  destroyChart('hc3');
+  const cv3=document.getElementById('hc3'); if(!cv3)return;
+  const metricLabels=['Registra Meta','No Registró','Cumple Metas','No Cumple'];
+  const campColors=['rgba(41,128,185,.7)','rgba(39,174,96,.7)','rgba(216,90,26,.7)'];
+  const c3ds=CAMP_KEYS.map((k,ki)=>{
+    const d=CAMP[k].semanas[4];
+    return{label:k,data:[d.regMeta,d.noReg,d.cumple,d.noCumple],
+      backgroundColor:campColors[ki],borderColor:campColors[ki].replace('.7','1'),borderWidth:1.5,borderRadius:5};
+  });
+  charts['hc3']=new Chart(cv3,{
+    type:'bar',data:{labels:metricLabels,datasets:c3ds},
+    options:{responsive:true,maintainAspectRatio:false,
+      plugins:{legend:{position:'top',labels:{font:{size:10},padding:8,boxWidth:12}}},
+      scales:{x:{grid:{display:false},ticks:{font:{size:10}}},y:{min:0,max:100,ticks:{callback:v=>v+'%',font:{size:10}},grid:{color:'rgba(0,0,0,.05)'}}}
+    }
+  });
+
+  // ── Chart 4: Slope / comparación C05 vs C06 Sem4 ──
+  destroyChart('hc4');
+  const cv4=document.getElementById('hc4'); if(!cv4)return;
+  const metrics=['Registra Meta','No Registró','Cumple Metas','No Cumple'];
+  const v05=[CAMP['202605'].semanas[4].regMeta,CAMP['202605'].semanas[4].noReg,CAMP['202605'].semanas[4].cumple,CAMP['202605'].semanas[4].noCumple];
+  const v06=[CAMP['202606'].semanas[4].regMeta,CAMP['202606'].semanas[4].noReg,CAMP['202606'].semanas[4].cumple,CAMP['202606'].semanas[4].noCumple];
+  charts['hc4']=new Chart(cv4,{
+    type:'bar',data:{labels:metrics,
+      datasets:[
+        {label:'C05 Sem4',data:v05,backgroundColor:'rgba(41,128,185,.75)',borderColor:'#2980B9',borderWidth:1.5,borderRadius:5},
+        {label:'C06 Sem4',data:v06,backgroundColor:'rgba(216,90,26,.75)',borderColor:'#D85A1A',borderWidth:1.5,borderRadius:5},
+      ]},
+    options:{responsive:true,maintainAspectRatio:false,indexAxis:'y',
+      plugins:{legend:{position:'top',labels:{font:{size:10},padding:8,boxWidth:12}},
+        tooltip:{callbacks:{label:ctx=>`${ctx.dataset.label}: ${ctx.raw!=null?ctx.raw+'%':'Sin datos'}`}}},
+      scales:{x:{min:0,max:100,ticks:{callback:v=>v+'%',font:{size:10}},grid:{color:'rgba(0,0,0,.05)'}},
+        y:{grid:{display:false},ticks:{font:{size:11}}}}
+    }
+  });
+}
+
+// ════════════════════════════════════════════════════════
+// DATA TABLE VIEW
+// ════════════════════════════════════════════════════════
+function renderData(){
+  const el=document.getElementById('view-data');
+  el.innerHTML='';
+  el.insertAdjacentHTML('beforeend','<div class="slabel">Tabla Completa · Todos los Datos por Campaña y Semana</div>');
+
+  const rows=[];
+  CAMP_KEYS.forEach(k=>{
+    Object.entries(CAMP[k].semanas).forEach(([s,d])=>{
+      rows.push({camp:k,sem:s,fecha:d.fecha,...d, universo:CAMP[k].universo});
+    });
+  });
+
+  const badgePct=(v,inv=false)=>{
+    if(v==null) return '<span class="badge gy">–</span>';
+    const cls = inv ? (v>50?'re':v>25?'ye':'gr') : (v>=80?'gr':v>=60?'ye':'re');
+    return `<span class="badge ${cls}">${v}%</span>`;
+  };
+  const badgeNR=(v)=>{
+    if(v==null) return '<span class="badge gy">–</span>';
+    return `<span class="badge ${v>=50?'re':v>=25?'ye':'gr'}">${v}%</span>`;
+  };
+
+  let tbl=`<div class="dt-wrap"><table class="dt">
+    <thead><tr>
+      <th>Campaña</th><th>Sem</th><th>Fecha</th><th>Universo</th>
+      <th>Registra Meta</th><th>No Registró</th><th>Prom 3C</th>
+      <th>Cumple Metas</th><th>No Cumple</th>
+      <th>Incrementa</th><th>Mantiene</th><th>Redujo</th>
+    </tr></thead><tbody>`;
+  rows.forEach(r=>{
+    tbl+=`<tr>
+      <td><span class="tag or"><b>${r.camp}</b></span></td>
+      <td style="font-weight:700">Sem ${r.sem}</td>
+      <td style="color:var(--gy5)">${r.fecha}</td>
+      <td style="font-weight:600">${fmt(r.universo)}</td>
+      <td>${badgePct(r.regMeta)}<br><small style="color:var(--gy5)">${r.regCnt!=null?fmt(r.regCnt):''}</small></td>
+      <td>${badgeNR(r.noReg)}<br><small style="color:var(--gy5)">${r.noRegCnt!=null?fmt(r.noRegCnt):''}</small></td>
+      <td>${r.prom!=null?`<span class="badge bl" style="background:var(--bl-bg);color:var(--bl)">${r.prom}%</span>`:'<span class="badge gy">–</span>'}</td>
+      <td>${r.cumple!=null?`${badgePct(r.cumple)}<br><small style="color:var(--gy5)">${fmt(r.cumpleCnt)}</small>`:'<span class="badge gy">–</span>'}</td>
+      <td>${r.noCumple!=null?`${badgePct(r.noCumple,true)}<br><small style="color:var(--gy5)">${fmt(r.noCumpleCnt)}</small>`:'<span class="badge gy">–</span>'}</td>
+      <td>${r.incr!=null?`<span class="tag gr">${r.incr}%</span>`:'–'}</td>
+      <td>${r.mant!=null?`<span class="tag or">${r.mant}%</span>`:'–'}</td>
+      <td>${r.red!=null?`<span class="tag re" style="background:var(--re-bg);color:var(--re)">${r.red}%</span>`:'–'}</td>
+    </tr>`;
+  });
+  tbl+=`</tbody></table></div>`;
+  el.insertAdjacentHTML('beforeend',tbl);
+
+  // Download CSV button
+  el.insertAdjacentHTML('beforeend',`<div style="margin-top:14px;">
+    <button onclick="downloadCSV()" style="background:var(--or);color:#fff;border:none;border-radius:8px;padding:9px 20px;font-size:13px;font-weight:700;cursor:pointer;">⬇ Exportar CSV</button>
+  </div>`);
+}
+
+function downloadCSV(){
+  const rows=[['Campaña','Semana','Fecha','Universo','RegistraMeta%','RegistraMetaCnt','NoRegistro%','NoRegistroCnt','Prom3Camp%','CumpleMetas%','CumpleMetasCnt','NoCumple%','NoCumpleCnt','Incrementa%','Mantiene%','Redujo%']];
+  CAMP_KEYS.forEach(k=>{
+    Object.entries(CAMP[k].semanas).forEach(([s,d])=>{
+      rows.push([k,s,d.fecha,CAMP[k].universo,d.regMeta??'',d.regCnt??'',d.noReg??'',d.noRegCnt??'',d.prom??'',d.cumple??'',d.cumpleCnt??'',d.noCumple??'',d.noCumpleCnt??'',d.incr??'',d.mant??'',d.red??'']);
+    });
+  });
+  const csv=rows.map(r=>r.join(',')).join('\n');
+  const a=document.createElement('a'); a.href='data:text/csv;charset=utf-8,﻿'+encodeURIComponent(csv);
+  a.download='metas_directoras_historico.csv'; a.click();
+}
+</script>
+</body>
+</html>
