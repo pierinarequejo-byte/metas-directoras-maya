@@ -338,38 +338,125 @@ const OBJ_REGISTRO = 80; // target % registro meta
 // Datos estructurados por País
 const ALL_DATA = {
   'PERU': {
-  '202604':{
-    label:'Campaña 04', universo:3049,
-    semanas:{
+    '202604':{label:'Campaña 04',universo:3049,semanas:{
       1:{fecha:'03/04/2026',regMeta:null,regCnt:null,noReg:100,noRegCnt:3049,prom:null,cumple:0,cumpleCnt:0,noCumple:null,noCumpleCnt:null,incr:null,mant:null,red:null},
       2:{fecha:'11/04/2026',regMeta:null,regCnt:null,noReg:100,noRegCnt:3049,prom:null,cumple:0,cumpleCnt:0,noCumple:null,noCumpleCnt:null,incr:null,mant:null,red:null},
       3:{fecha:'19/04/2026',regMeta:null,regCnt:null,noReg:100,noRegCnt:3049,prom:null,cumple:0,cumpleCnt:0,noCumple:null,noCumpleCnt:null,incr:null,mant:null,red:null},
       4:{fecha:'23/05/2026',regMeta:null,regCnt:null,noReg:100,noRegCnt:3049,prom:null,cumple:0,cumpleCnt:0,noCumple:null,noCumpleCnt:null,incr:null,mant:null,red:null},
-    }
-  },
-  '202605':{
-    label:'Campaña 05', universo:3552,
-    semanas:{
+    }},
+    '202605':{label:'Campaña 05',universo:3552,semanas:{
       1:{fecha:'01/05/2026',regMeta:78,regCnt:2776,noReg:22,noRegCnt:776,prom:null,cumple:0,cumpleCnt:0,noCumple:100,noCumpleCnt:2776,incr:68,mant:28,red:4},
       2:{fecha:'08/05/2026',regMeta:78,regCnt:2776,noReg:22,noRegCnt:776,prom:null,cumple:0,cumpleCnt:8,noCumple:100,noCumpleCnt:2768,incr:68,mant:28,red:4},
       3:{fecha:'15/05/2026',regMeta:78,regCnt:2776,noReg:22,noRegCnt:776,prom:null,cumple:1,cumpleCnt:33,noCumple:99,noCumpleCnt:2743,incr:68,mant:28,red:4},
       4:{fecha:'19/06/2026',regMeta:78,regCnt:2776,noReg:22,noRegCnt:776,prom:null,cumple:29,cumpleCnt:809,noCumple:71,noCumpleCnt:1967,incr:68,mant:28,red:4},
-    }
-  },
-  '202606':{
-    label:'Campaña 06', universo:3552,
-    semanas:{
+    }},
+    '202606':{label:'Campaña 06',universo:3552,semanas:{
       1:{fecha:'29/05/2026',regMeta:76,regCnt:2688,noReg:24,noRegCnt:864,prom:78,cumple:0,cumpleCnt:0,noCumple:100,noCumpleCnt:2688,incr:90,mant:6,red:3},
       2:{fecha:'06/06/2026',regMeta:76,regCnt:2688,noReg:24,noRegCnt:864,prom:78,cumple:0,cumpleCnt:2,noCumple:100,noCumpleCnt:2686,incr:90,mant:6,red:3},
       3:{fecha:'13/06/2026',regMeta:76,regCnt:2688,noReg:24,noRegCnt:864,prom:78,cumple:1,cumpleCnt:17,noCumple:99,noCumpleCnt:2671,incr:90,mant:6,red:3},
       4:{fecha:'22/06/2026',regMeta:76,regCnt:2688,noReg:24,noRegCnt:864,prom:78,cumple:23,cumpleCnt:617,noCumple:77,noCumpleCnt:2071,incr:90,mant:6,red:3},
-    }
-  }
-  }, // end PERU
-  // ── Otros países (pendiente de datos) ──
-  'COLOMBIA':{ '202605':{label:'Campaña 05',universo:null,semanas:{1:{fecha:'–',regMeta:null,regCnt:null,noReg:null,noRegCnt:null,prom:null,cumple:null,cumpleCnt:null,noCumple:null,noCumpleCnt:null,incr:null,mant:null,red:null},2:{fecha:'–',regMeta:null,regCnt:null,noReg:null,noRegCnt:null,prom:null,cumple:null,cumpleCnt:null,noCumple:null,noCumpleCnt:null,incr:null,mant:null,red:null},3:{fecha:'–',regMeta:null,regCnt:null,noReg:null,noRegCnt:null,prom:null,cumple:null,cumpleCnt:null,noCumple:null,noCumpleCnt:null,incr:null,mant:null,red:null},4:{fecha:'–',regMeta:null,regCnt:null,noReg:null,noRegCnt:null,prom:null,cumple:null,cumpleCnt:null,noCumple:null,noCumpleCnt:null,incr:null,mant:null,red:null}}} },
-  'ECUADOR':{ '202605':{label:'Campaña 05',universo:null,semanas:{1:{fecha:'–',regMeta:null,regCnt:null,noReg:null,noRegCnt:null,prom:null,cumple:null,cumpleCnt:null,noCumple:null,noCumpleCnt:null,incr:null,mant:null,red:null},2:{fecha:'–',regMeta:null,regCnt:null,noReg:null,noRegCnt:null,prom:null,cumple:null,cumpleCnt:null,noCumple:null,noCumpleCnt:null,incr:null,mant:null,red:null},3:{fecha:'–',regMeta:null,regCnt:null,noReg:null,noRegCnt:null,prom:null,cumple:null,cumpleCnt:null,noCumple:null,noCumpleCnt:null,incr:null,mant:null,red:null},4:{fecha:'–',regMeta:null,regCnt:null,noReg:null,noRegCnt:null,prom:null,cumple:null,cumpleCnt:null,noCumple:null,noCumpleCnt:null,incr:null,mant:null,red:null}}} },
-  'BOLIVIA':{ '202605':{label:'Campaña 05',universo:null,semanas:{1:{fecha:'–',regMeta:null,regCnt:null,noReg:null,noRegCnt:null,prom:null,cumple:null,cumpleCnt:null,noCumple:null,noCumpleCnt:null,incr:null,mant:null,red:null},2:{fecha:'–',regMeta:null,regCnt:null,noReg:null,noRegCnt:null,prom:null,cumple:null,cumpleCnt:null,noCumple:null,noCumpleCnt:null,incr:null,mant:null,red:null},3:{fecha:'–',regMeta:null,regCnt:null,noReg:null,noRegCnt:null,prom:null,cumple:null,cumpleCnt:null,noCumple:null,noCumpleCnt:null,incr:null,mant:null,red:null},4:{fecha:'–',regMeta:null,regCnt:null,noReg:null,noRegCnt:null,prom:null,cumple:null,cumpleCnt:null,noCumple:null,noCumpleCnt:null,incr:null,mant:null,red:null}}} },
+    }},
+  },
+  'COLOMBIA': {
+    '202604':{label:'Campaña 04',universo:3078,semanas:{
+      1:{fecha:'27/04/2026',regMeta:null,regCnt:null,noReg:100,noRegCnt:3078,prom:null,cumple:0,cumpleCnt:0,noCumple:null,noCumpleCnt:null,incr:null,mant:null,red:null},
+      2:{fecha:'27/04/2026',regMeta:null,regCnt:null,noReg:100,noRegCnt:3078,prom:null,cumple:0,cumpleCnt:0,noCumple:null,noCumpleCnt:null,incr:null,mant:null,red:null},
+      3:{fecha:'27/04/2026',regMeta:null,regCnt:null,noReg:100,noRegCnt:3078,prom:null,cumple:0,cumpleCnt:0,noCumple:null,noCumpleCnt:null,incr:null,mant:null,red:null},
+      4:{fecha:'27/04/2026',regMeta:null,regCnt:null,noReg:100,noRegCnt:3078,prom:null,cumple:0,cumpleCnt:0,noCumple:null,noCumpleCnt:null,incr:null,mant:null,red:null},
+    }},
+    '202605':{label:'Campaña 05',universo:3633,semanas:{
+      1:{fecha:'–',regMeta:74,regCnt:2682,noReg:26,noRegCnt:951,prom:null,cumple:0,cumpleCnt:3,noCumple:100,noCumpleCnt:2679,incr:66,mant:31,red:3},
+      2:{fecha:'–',regMeta:74,regCnt:2682,noReg:26,noRegCnt:951,prom:null,cumple:0,cumpleCnt:5,noCumple:100,noCumpleCnt:2677,incr:66,mant:31,red:3},
+      3:{fecha:'–',regMeta:74,regCnt:2682,noReg:26,noRegCnt:951,prom:null,cumple:2,cumpleCnt:45,noCumple:98,noCumpleCnt:2637,incr:66,mant:31,red:3},
+      4:{fecha:'–',regMeta:74,regCnt:2682,noReg:26,noRegCnt:951,prom:null,cumple:30,cumpleCnt:794,noCumple:70,noCumpleCnt:1888,incr:66,mant:31,red:3},
+    }},
+    '202606':{label:'Campaña 06',universo:3666,semanas:{
+      1:{fecha:'–',regMeta:69,regCnt:2543,noReg:31,noRegCnt:1123,prom:74,cumple:0,cumpleCnt:1,noCumple:100,noCumpleCnt:2542,incr:81,mant:17,red:2},
+      2:{fecha:'–',regMeta:69,regCnt:2543,noReg:31,noRegCnt:1123,prom:74,cumple:0,cumpleCnt:4,noCumple:100,noCumpleCnt:2539,incr:81,mant:17,red:2},
+      3:{fecha:'–',regMeta:69,regCnt:2543,noReg:31,noRegCnt:1123,prom:74,cumple:1,cumpleCnt:23,noCumple:99,noCumpleCnt:2533,incr:81,mant:17,red:2},
+      4:{fecha:'–',regMeta:69,regCnt:2543,noReg:31,noRegCnt:1123,prom:74,cumple:21,cumpleCnt:546,noCumple:79,noCumpleCnt:2010,incr:81,mant:17,red:2},
+    }},
+  },
+  'BOLIVIA': {
+    '202604':{label:'Campaña 04',universo:709,semanas:{
+      1:{fecha:'23/05/2026',regMeta:null,regCnt:null,noReg:100,noRegCnt:709,prom:null,cumple:0,cumpleCnt:0,noCumple:null,noCumpleCnt:null,incr:null,mant:null,red:null},
+      2:{fecha:'23/05/2026',regMeta:null,regCnt:null,noReg:100,noRegCnt:709,prom:null,cumple:0,cumpleCnt:0,noCumple:null,noCumpleCnt:null,incr:null,mant:null,red:null},
+      3:{fecha:'23/05/2026',regMeta:null,regCnt:null,noReg:100,noRegCnt:709,prom:null,cumple:0,cumpleCnt:0,noCumple:null,noCumpleCnt:null,incr:null,mant:null,red:null},
+      4:{fecha:'23/05/2026',regMeta:null,regCnt:null,noReg:100,noRegCnt:709,prom:null,cumple:0,cumpleCnt:0,noCumple:null,noCumpleCnt:null,incr:null,mant:null,red:null},
+    }},
+    '202605':{label:'Campaña 05',universo:847,semanas:{
+      1:{fecha:'–',regMeta:76,regCnt:644,noReg:24,noRegCnt:203,prom:null,cumple:0,cumpleCnt:1,noCumple:100,noCumpleCnt:643,incr:70,mant:20,red:9},
+      2:{fecha:'–',regMeta:76,regCnt:644,noReg:24,noRegCnt:203,prom:null,cumple:1,cumpleCnt:8,noCumple:99,noCumpleCnt:636,incr:70,mant:20,red:9},
+      3:{fecha:'–',regMeta:76,regCnt:644,noReg:24,noRegCnt:203,prom:null,cumple:6,cumpleCnt:38,noCumple:94,noCumpleCnt:606,incr:70,mant:20,red:9},
+      4:{fecha:'–',regMeta:76,regCnt:644,noReg:24,noRegCnt:203,prom:null,cumple:40,cumpleCnt:255,noCumple:60,noCumpleCnt:389,incr:70,mant:20,red:9},
+    }},
+    '202606':{label:'Campaña 06',universo:883,semanas:{
+      1:{fecha:'–',regMeta:67,regCnt:592,noReg:33,noRegCnt:291,prom:76,cumple:0,cumpleCnt:0,noCumple:100,noCumpleCnt:592,incr:81,mant:11,red:8},
+      2:{fecha:'–',regMeta:67,regCnt:592,noReg:33,noRegCnt:291,prom:76,cumple:0,cumpleCnt:0,noCumple:100,noCumpleCnt:592,incr:81,mant:11,red:8},
+      3:{fecha:'–',regMeta:67,regCnt:592,noReg:33,noRegCnt:291,prom:76,cumple:0,cumpleCnt:0,noCumple:100,noCumpleCnt:592,incr:81,mant:11,red:8},
+      4:{fecha:'–',regMeta:67,regCnt:592,noReg:33,noRegCnt:291,prom:76,cumple:17,cumpleCnt:103,noCumple:83,noCumpleCnt:489,incr:81,mant:11,red:8},
+    }},
+  },
+  'MEXICO': {
+    '202604':{label:'Campaña 04',universo:167,semanas:{
+      1:{fecha:'27/04/2026',regMeta:null,regCnt:null,noReg:100,noRegCnt:167,prom:null,cumple:0,cumpleCnt:0,noCumple:null,noCumpleCnt:null,incr:null,mant:null,red:null},
+      2:{fecha:'27/04/2026',regMeta:null,regCnt:null,noReg:100,noRegCnt:167,prom:null,cumple:0,cumpleCnt:0,noCumple:null,noCumpleCnt:null,incr:null,mant:null,red:null},
+      3:{fecha:'27/04/2026',regMeta:null,regCnt:null,noReg:100,noRegCnt:167,prom:null,cumple:0,cumpleCnt:0,noCumple:null,noCumpleCnt:null,incr:null,mant:null,red:null},
+      4:{fecha:'27/04/2026',regMeta:null,regCnt:null,noReg:100,noRegCnt:167,prom:null,cumple:0,cumpleCnt:0,noCumple:null,noCumpleCnt:null,incr:null,mant:null,red:null},
+    }},
+    '202605':{label:'Campaña 05',universo:199,semanas:{
+      1:{fecha:'–',regMeta:78,regCnt:156,noReg:22,noRegCnt:43,prom:null,cumple:0,cumpleCnt:0,noCumple:100,noCumpleCnt:156,incr:59,mant:36,red:5},
+      2:{fecha:'–',regMeta:78,regCnt:156,noReg:22,noRegCnt:43,prom:null,cumple:0,cumpleCnt:0,noCumple:100,noCumpleCnt:156,incr:59,mant:36,red:5},
+      3:{fecha:'–',regMeta:78,regCnt:156,noReg:22,noRegCnt:43,prom:null,cumple:0,cumpleCnt:0,noCumple:100,noCumpleCnt:156,incr:59,mant:36,red:5},
+      4:{fecha:'–',regMeta:78,regCnt:156,noReg:22,noRegCnt:43,prom:null,cumple:1,cumpleCnt:1,noCumple:99,noCumpleCnt:155,incr:59,mant:36,red:5},
+    }},
+    '202606':{label:'Campaña 06',universo:198,semanas:{
+      1:{fecha:'–',regMeta:88,regCnt:174,noReg:12,noRegCnt:24,prom:78,cumple:0,cumpleCnt:0,noCumple:100,noCumpleCnt:174,incr:79,mant:16,red:5},
+      2:{fecha:'–',regMeta:88,regCnt:174,noReg:12,noRegCnt:24,prom:78,cumple:0,cumpleCnt:0,noCumple:100,noCumpleCnt:174,incr:79,mant:16,red:5},
+      3:{fecha:'–',regMeta:88,regCnt:174,noReg:12,noRegCnt:24,prom:78,cumple:0,cumpleCnt:0,noCumple:100,noCumpleCnt:174,incr:79,mant:16,red:5},
+      4:{fecha:'–',regMeta:88,regCnt:174,noReg:12,noRegCnt:24,prom:78,cumple:27,cumpleCnt:47,noCumple:73,noCumpleCnt:127,incr:79,mant:16,red:5},
+    }},
+  },
+  'GUATEMALA': {
+    '202604':{label:'Campaña 04',universo:131,semanas:{
+      1:{fecha:'27/04/2026',regMeta:null,regCnt:null,noReg:100,noRegCnt:131,prom:null,cumple:0,cumpleCnt:0,noCumple:null,noCumpleCnt:null,incr:null,mant:null,red:null},
+      2:{fecha:'27/04/2026',regMeta:null,regCnt:null,noReg:100,noRegCnt:131,prom:null,cumple:0,cumpleCnt:0,noCumple:null,noCumpleCnt:null,incr:null,mant:null,red:null},
+      3:{fecha:'27/04/2026',regMeta:null,regCnt:null,noReg:100,noRegCnt:131,prom:null,cumple:0,cumpleCnt:0,noCumple:null,noCumpleCnt:null,incr:null,mant:null,red:null},
+      4:{fecha:'27/04/2026',regMeta:null,regCnt:null,noReg:100,noRegCnt:131,prom:null,cumple:0,cumpleCnt:0,noCumple:null,noCumpleCnt:null,incr:null,mant:null,red:null},
+    }},
+    '202605':{label:'Campaña 05',universo:152,semanas:{
+      1:{fecha:'02/05/2026',regMeta:80,regCnt:121,noReg:20,noRegCnt:31,prom:null,cumple:0,cumpleCnt:0,noCumple:100,noCumpleCnt:121,incr:40,mant:53,red:7},
+      2:{fecha:'–',regMeta:80,regCnt:121,noReg:20,noRegCnt:31,prom:null,cumple:0,cumpleCnt:0,noCumple:100,noCumpleCnt:121,incr:40,mant:53,red:7},
+      3:{fecha:'–',regMeta:80,regCnt:121,noReg:20,noRegCnt:31,prom:null,cumple:0,cumpleCnt:0,noCumple:100,noCumpleCnt:121,incr:40,mant:53,red:7},
+      4:{fecha:'–',regMeta:80,regCnt:121,noReg:20,noRegCnt:31,prom:null,cumple:55,cumpleCnt:66,noCumple:45,noCumpleCnt:55,incr:40,mant:53,red:7},
+    }},
+    '202606':{label:'Campaña 06',universo:155,semanas:{
+      1:{fecha:'30/05/2026',regMeta:86,regCnt:133,noReg:14,noRegCnt:22,prom:80,cumple:0,cumpleCnt:0,noCumple:100,noCumpleCnt:133,incr:83,mant:11,red:5},
+      2:{fecha:'–',regMeta:86,regCnt:133,noReg:14,noRegCnt:22,prom:80,cumple:0,cumpleCnt:0,noCumple:100,noCumpleCnt:133,incr:83,mant:11,red:5},
+      3:{fecha:'–',regMeta:86,regCnt:133,noReg:14,noRegCnt:22,prom:80,cumple:0,cumpleCnt:0,noCumple:100,noCumpleCnt:133,incr:83,mant:11,red:5},
+      4:{fecha:'–',regMeta:86,regCnt:133,noReg:14,noRegCnt:22,prom:80,cumple:34,cumpleCnt:45,noCumple:66,noCumpleCnt:88,incr:83,mant:11,red:5},
+    }},
+  },
+  'ECUADOR': {
+    '202604':{label:'Campaña 04',universo:2114,semanas:{
+      1:{fecha:'23/05/2026',regMeta:null,regCnt:null,noReg:100,noRegCnt:2114,prom:null,cumple:0,cumpleCnt:0,noCumple:null,noCumpleCnt:null,incr:null,mant:null,red:null},
+      2:{fecha:'23/05/2026',regMeta:null,regCnt:null,noReg:100,noRegCnt:2114,prom:null,cumple:0,cumpleCnt:0,noCumple:null,noCumpleCnt:null,incr:null,mant:null,red:null},
+      3:{fecha:'23/05/2026',regMeta:null,regCnt:null,noReg:100,noRegCnt:2114,prom:null,cumple:0,cumpleCnt:0,noCumple:null,noCumpleCnt:null,incr:null,mant:null,red:null},
+      4:{fecha:'23/05/2026',regMeta:null,regCnt:null,noReg:100,noRegCnt:2114,prom:null,cumple:0,cumpleCnt:0,noCumple:null,noCumpleCnt:null,incr:null,mant:null,red:null},
+    }},
+    '202605':{label:'Campaña 05',universo:2453,semanas:{
+      1:{fecha:'–',regMeta:80,regCnt:1951,noReg:20,noRegCnt:502,prom:null,cumple:0,cumpleCnt:1,noCumple:100,noCumpleCnt:1950,incr:67,mant:31,red:2},
+      2:{fecha:'–',regMeta:80,regCnt:1951,noReg:20,noRegCnt:502,prom:null,cumple:0,cumpleCnt:1,noCumple:100,noCumpleCnt:1950,incr:67,mant:31,red:2},
+      3:{fecha:'–',regMeta:80,regCnt:1951,noReg:20,noRegCnt:502,prom:null,cumple:4,cumpleCnt:84,noCumple:96,noCumpleCnt:1867,incr:67,mant:31,red:2},
+      4:{fecha:'20/06/2026',regMeta:80,regCnt:1951,noReg:20,noRegCnt:502,prom:null,cumple:31,cumpleCnt:612,noCumple:69,noCumpleCnt:1339,incr:67,mant:31,red:2},
+    }},
+    '202606':{label:'Campaña 06',universo:2450,semanas:{
+      1:{fecha:'21/06/2026',regMeta:73,regCnt:1781,noReg:27,noRegCnt:669,prom:80,cumple:0,cumpleCnt:0,noCumple:100,noCumpleCnt:1781,incr:67,mant:28,red:5},
+      2:{fecha:'–',regMeta:73,regCnt:1781,noReg:27,noRegCnt:669,prom:80,cumple:0,cumpleCnt:0,noCumple:100,noCumpleCnt:1781,incr:67,mant:28,red:5},
+      3:{fecha:'–',regMeta:73,regCnt:1781,noReg:27,noRegCnt:669,prom:80,cumple:3,cumpleCnt:47,noCumple:97,noCumpleCnt:1734,incr:67,mant:28,red:5},
+      4:{fecha:'21/06/2026',regMeta:73,regCnt:1781,noReg:27,noRegCnt:669,prom:80,cumple:26,cumpleCnt:467,noCumple:74,noCumpleCnt:1314,incr:67,mant:28,red:5},
+    }},
+  },
 };
 
 // ────────────────────────────────────────────────────────
@@ -463,11 +550,9 @@ function buildFilters(){
   pp.innerHTML='';
   PAISES.forEach(p=>{
     const b=document.createElement('button');
-    const hasData = p==='PERU'; // only PERU has real data
     b.className='pill'+(p===selP?' on':'');
-    b.textContent = p + (hasData ? '' : ' 🔒');
-    b.title = hasData ? p : p+' — datos pendientes';
-    b.style.opacity = hasData ? '1' : '.55';
+    b.textContent = p;
+    b.title = p;
     b.onclick=()=>{ if(p!==selP) setCountry(p); };
     pp.appendChild(b);
   });
@@ -515,13 +600,24 @@ function renderDash(){
 
   // ── Alert banner ──
   let alertHtml='';
-  if(d.noReg===100){
-    alertHtml=`<div class="alert-bar bad">⚠️ <strong>Sin registros:</strong> Esta combinación campaña/semana no tiene datos de registro de metas.</div>`;
-  } else if(d.regMeta!==null && d.regMeta < OBJ_REGISTRO){
-    const gap = OBJ_REGISTRO - d.regMeta;
-    alertHtml=`<div class="alert-bar warn">📌 <strong>Bajo el objetivo:</strong> El % de Registro (${d.regMeta}%) está ${gap}pp por debajo del objetivo de ${OBJ_REGISTRO}% — ${fmt(Math.round(gap/100*c.universo))} directoras adicionales requeridas.</div>`;
-  } else if(d.regMeta!==null && d.regMeta >= OBJ_REGISTRO){
-    alertHtml=`<div class="alert-bar good">✅ <strong>Objetivo alcanzado:</strong> El registro de metas (${d.regMeta}%) supera el objetivo del ${OBJ_REGISTRO}%.</div>`;
+  if(d.regMeta===null){
+    // C04: no registration enabled
+    alertHtml=`<div class="alert-bar bad">⚠️ <strong>Campaña sin planificación habilitada:</strong> La Campaña 04 no tenía registro de metas habilitado. Los datos de cumplimiento no aplican.</div>`;
+  } else if(selS===1){
+    // S1 = planning week → show registration alert
+    if(d.regMeta < OBJ_REGISTRO){
+      const gap = OBJ_REGISTRO - d.regMeta;
+      alertHtml=`<div class="alert-bar warn">📌 <strong>Registro bajo el objetivo (Semana 1 – Planificación):</strong> ${d.regMeta}% registraron meta, faltan ${gap}pp para ${OBJ_REGISTRO}% — ${fmt(Math.round(gap/100*c.universo))} directoras sin planificar.</div>`;
+    } else {
+      alertHtml=`<div class="alert-bar good">✅ <strong>Objetivo de planificación alcanzado (Semana 1):</strong> ${d.regMeta}% de directoras registraron su meta, superando el objetivo de ${OBJ_REGISTRO}%.</div>`;
+    }
+  } else {
+    // S2-S4 = execution weeks → show cumplimiento alert
+    if(d.cumple!=null){
+      if(d.cumple>=25) alertHtml=`<div class="alert-bar good">🎯 <strong>Buen cumplimiento (Sem ${selS}):</strong> ${d.cumple}% de directoras cumplió su meta — ${fmt(d.cumpleCnt)} directoras con la receta de activas completada.</div>`;
+      else if(d.cumple>=10) alertHtml=`<div class="alert-bar warn">⏳ <strong>Cumplimiento en progreso (Sem ${selS}):</strong> ${d.cumple}% cumplió hasta ahora (${fmt(d.cumpleCnt)} directoras). Quedan ${fmt(d.noCumpleCnt)} por completar la receta de activas.</div>`;
+      else alertHtml=`<div class="alert-bar bad">🔔 <strong>Bajo cumplimiento (Sem ${selS}):</strong> Solo ${d.cumple}% cumplió su meta. ${fmt(d.noCumpleCnt)} directoras aún no completan la receta (reactivar + retener + PPED).</div>`;
+    }
   }
   if(alertHtml) el.insertAdjacentHTML('beforeend',alertHtml);
 
@@ -617,33 +713,66 @@ function renderDash(){
 
 function buildInsights(c,s,d,ps,pcs,camp){
   const ins = [];
-  // Registro vs objetivo
-  if(d.regMeta!=null){
-    const gap = d.regMeta - OBJ_REGISTRO;
-    if(gap>=0) ins.push({ico:'✅',t:'Objetivo cumplido',b:`La campaña ${c} alcanzó ${d.regMeta}% de registro, superando el objetivo de ${OBJ_REGISTRO}% en ${gap}pp.`});
-    else ins.push({ico:'⚠️',t:'Bajo el objetivo',b:`Faltan ${-gap}pp para alcanzar el objetivo de ${OBJ_REGISTRO}%. Son ~${fmt(Math.round(-gap/100*camp.universo))} directoras adicionales.`});
+
+  if(s === 1){
+    // ── SEMANA 1: Planificación ──
+    if(d.regMeta!=null){
+      const gap = d.regMeta - OBJ_REGISTRO;
+      if(gap>=0) ins.push({ico:'✅',t:'Objetivo de registro alcanzado',b:`${d.regMeta}% de directoras planificaron su meta (${fmt(d.regCnt)}), superando el objetivo de ${OBJ_REGISTRO}% en ${gap}pp.`});
+      else ins.push({ico:'⚠️',t:'Registro bajo el objetivo',b:`Con ${d.regMeta}% de registro (${fmt(d.regCnt)} directoras), faltan ${-gap}pp para el objetivo de ${OBJ_REGISTRO}%. Aproximadamente ${fmt(Math.round(-gap/100*camp.universo))} directoras adicionales sin planificar.`});
+    }
+    // Interacción de meta (receta de activas)
+    if(d.incr!=null){
+      if(d.incr>=70) ins.push({ico:'🚀',t:'Alta ambición de incremento',b:`El ${d.incr}% de directoras planificó incrementar su meta. Señal positiva: la receta de activas (reactivar, retener, PPED) se espera con fuerza.`});
+      else if(d.mant!=null&&d.mant>=50) ins.push({ico:'➡️',t:'Mayoría mantiene meta',b:`El ${d.mant}% planea mantener su nivel y el ${d.incr}% incrementar. Oportunidad de motivar más directoras hacia la receta de activas.`});
+      if(d.red!=null&&d.red>=10) ins.push({ico:'📉',t:'Directoras reduciendo meta',b:`El ${d.red}% planificó reducir su meta — se recomienda acompañamiento en la receta (reactivar + retener + PPED) para revertir esta tendencia.`});
+    }
+    // Vs campaña anterior (misma semana 1)
+    if(pcs?.regMeta!=null&&d.regMeta!=null){
+      const d2=d.regMeta-pcs.regMeta;
+      if(d2<0) ins.push({ico:'📉',t:'Retroceso vs campaña anterior',b:`El registro bajó ${Math.abs(d2)}pp respecto a la S1 de la campaña anterior (${pcs.regMeta}% → ${d.regMeta}%).`});
+      else if(d2>0) ins.push({ico:'📈',t:'Mejora vs campaña anterior',b:`El registro subió ${d2}pp respecto a la S1 de la campaña anterior (${pcs.regMeta}% → ${d.regMeta}%).`});
+      else ins.push({ico:'➡️',t:'Sin cambio vs campaña anterior',b:`El registro se mantuvo igual que la S1 de la campaña anterior (${d.regMeta}%).`});
+    }
+    // Promedio histórico
+    if(d.prom!=null&&d.regMeta!=null){
+      const dif=d.regMeta-d.prom;
+      if(Math.abs(dif)>=2) ins.push({ico:'📌',t:'Comparativa promedio 3 campañas',b:`El registro (${d.regMeta}%) está ${Math.abs(dif)}pp ${dif>0?'por encima':'por debajo'} del promedio histórico de las últimas 3 campañas (${d.prom}%).`});
+    }
+    // Alto no-registro en planificación
+    if(d.noReg!=null&&d.noReg>=50) ins.push({ico:'🔴',t:'Alto porcentaje sin planificar',b:`${d.noReg}% del universo no registró meta en semana 1 — ${fmt(d.noRegCnt)} directoras. La planificación cierra al final de esta semana.`});
+
+  } else {
+    // ── SEMANAS 2–4: Ejecución (cumplimiento) ──
+    if(d.cumple!=null){
+      if(s===4){
+        if(d.cumple>=25) ins.push({ico:'🏆',t:'Buen cierre de campaña',b:`Al cierre (Sem 4), el ${d.cumple}% de directoras cumplió su meta — ${fmt(d.cumpleCnt)} directoras completaron la receta de activas (reactivar + retener + PPED).`});
+        else if(d.cumple>=10) ins.push({ico:'🔔',t:'Cumplimiento moderado al cierre',b:`El ${d.cumple}% alcanzó su meta al cierre. ${fmt(d.noCumpleCnt)} directoras no completaron la receta de activas.`});
+        else ins.push({ico:'🔔',t:'Bajo cumplimiento al cierre',b:`Solo el ${d.cumple}% logró su meta. ${fmt(d.noCumpleCnt)} directoras no completaron la receta (reactivar + retener + PPED). Revisar estrategia para próxima campaña.`});
+      } else {
+        if(d.cumple>=10) ins.push({ico:'📈',t:`Avance en semana ${s}`,b:`El ${d.cumple}% ya cumplió su meta en semana ${s} (${fmt(d.cumpleCnt)} directoras). Buen ritmo hacia el cierre de campaña.`});
+        else ins.push({ico:'⏳',t:`Cumplimiento en desarrollo (S${s})`,b:`El ${d.cumple}% va cumpliendo (${fmt(d.cumpleCnt)} directoras). El grueso del cumplimiento de la receta de activas ocurre hacia la semana 4.`});
+      }
+    }
+    // Tendencia semanal
+    if(ps?.cumple!=null&&d.cumple!=null&&s>1){
+      const dc=d.cumple-ps.cumple;
+      if(dc>0) ins.push({ico:'📈',t:'Mejora semanal',b:`El cumplimiento subió ${dc}pp vs semana anterior (${ps.cumple}% → ${d.cumple}%). La receta de activas está tomando ritmo.`});
+      else if(dc<0) ins.push({ico:'📉',t:'Ritmo más lento esta semana',b:`El cumplimiento subió solo ${Math.abs(dc)}pp menos que la semana anterior (${ps.cumple}% → ${d.cumple}%).`});
+    }
+    // Vs campaña anterior
+    if(pcs?.cumple!=null&&d.cumple!=null){
+      const d2=d.cumple-pcs.cumple;
+      if(d2<0) ins.push({ico:'📉',t:'Debajo de campaña anterior',b:`El cumplimiento (${d.cumple}%) está ${Math.abs(d2)}pp por debajo de la misma semana en la campaña anterior (${pcs.cumple}%).`});
+      else if(d2>0) ins.push({ico:'📈',t:'Mejor que campaña anterior',b:`El cumplimiento (${d.cumple}%) supera en ${d2}pp a la misma semana en la campaña anterior (${pcs.cumple}%).`});
+    }
+    // Nota sobre base de planificación
+    if(d.regMeta!=null){
+      const gap=d.regMeta-OBJ_REGISTRO;
+      if(gap<0) ins.push({ico:'📋',t:'Base de planificación limitada',b:`Esta campaña arrancó con ${d.regMeta}% de registro (objetivo: ${OBJ_REGISTRO}%). El cumplimiento corre sobre las ${fmt(d.regCnt)} directoras que planificaron en S1.`});
+      else ins.push({ico:'📋',t:'Base de planificación sólida',b:`${d.regMeta}% de directoras planificaron su meta (${fmt(d.regCnt)}). El cumplimiento medido aplica sobre esta base registrada en S1.`});
+    }
   }
-  // Tendencia vs campaña anterior
-  if(pcs?.regMeta!=null&&d.regMeta!=null){
-    const d2=d.regMeta-pcs.regMeta;
-    if(d2<0) ins.push({ico:'📉',t:'Retroceso vs campaña anterior',b:`El registro bajó ${Math.abs(d2)}pp respecto a la semana ${s} de la campaña anterior (${pcs.regMeta}% → ${d.regMeta}%).`});
-    else if(d2>0) ins.push({ico:'📈',t:'Mejora vs campaña anterior',b:`El registro subió ${d2}pp respecto a la semana ${s} de la campaña anterior (${pcs.regMeta}% → ${d.regMeta}%).`});
-    else ins.push({ico:'➡️',t:'Sin cambio vs campaña anterior',b:`El registro se mantuvo igual que la semana ${s} de la campaña anterior (${d.regMeta}%).`});
-  }
-  // Promedio histórico
-  if(d.prom!=null&&d.regMeta!=null){
-    const dif=d.regMeta-d.prom;
-    if(Math.abs(dif)>=2) ins.push({ico:'📌',t:'Comparativa promedio 3 campañas',b:`El registro actual (${d.regMeta}%) está ${Math.abs(dif)}pp ${dif>0?'por encima':'por debajo'} del promedio de las últimas 3 campañas (${d.prom}%).`});
-  }
-  // Cumplimiento final
-  if(d.cumple!=null&&s===4){
-    if(d.cumple>=25) ins.push({ico:'🏆',t:'Buen cierre de campaña',b:`Al cierre (Sem 4), el ${d.cumple}% de directoras cumplió su meta — ${fmt(d.cumpleCnt)} directoras.`});
-    else ins.push({ico:'🔔',t:'Bajo cumplimiento al cierre',b:`Solo el ${d.cumple}% alcanzó su meta al cierre de campaña. ${fmt(d.noCumpleCnt)} directoras no cumplieron.`});
-  }
-  // Interacción
-  if(d.incr!=null&&d.incr>=70) ins.push({ico:'🚀',t:'Alta tasa de incremento',b:`El ${d.incr}% de las directoras con meta incrementaron su objetivo, señal de ambición y confianza en el ciclo.`});
-  // No registró notable
-  if(d.noReg>=50) ins.push({ico:'🔴',t:'Alto porcentaje sin registrar',b:`${pct(d.noReg)} del universo no registró meta. Foco recomendado en activación de directoras inactivas.`});
 
   if(ins.length===0) ins.push({ico:'ℹ️',t:'Sin insights adicionales',b:'No hay patrones destacables para esta combinación de campaña y semana.'});
   return ins.map(i=>`<div class="insight"><div class="ins-ico">${i.ico}</div><div><div class="ins-title">${i.t}</div><div class="ins-body">${i.b}</div></div></div>`).join('');
@@ -713,7 +842,7 @@ function renderHist(){
     <div class="ss-item"><span class="ss-val" style="color:var(--re)">${worstNoReg!=null?worstNoReg+'%':'–'}</span><span class="ss-lbl">Mayor No Registró (${worstCamp})</span></div>
     <div class="ss-item"><span class="ss-val" style="color:var(--bl)">${c05s4?.cumple!=null?c05s4.cumple+'%':'–'}</span><span class="ss-lbl">Cumple Meta C05 S4</span></div>
     <div class="ss-item"><span class="ss-val" style="color:var(--or)">${c06s4?.cumple!=null?c06s4.cumple+'%':'–'}</span><span class="ss-lbl">Cumple Meta C06 S4</span></div>
-    <div class="ss-item"><span class="ss-val">3,552</span><span class="ss-lbl">Universo (C05–C06)</span></div>
+    <div class="ss-item"><span class="ss-val">${CAMP['202606']?fmt(CAMP['202606'].universo):'–'}</span><span class="ss-lbl">Universo C06</span></div>
   </div>`);
 
   // ── SECTION: Evolución temporal full ──
